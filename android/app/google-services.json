@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "610591342457",
+    "firebase_url": "https://flash-chat-64a3f.firebaseio.com",
+    "project_id": "flash-chat-64a3f",
+    "storage_bucket": "flash-chat-64a3f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:610591342457:android:f3adb298e1756dcc70b9a8",
+        "android_client_info": {
+          "package_name": "com.appruloft.flashchat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "610591342457-kj9bpc51bbi0l5r2q3fe6gbbik4s8a1q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQERtoJXYOFlfMqxdCVeM6YIK0lEt-mXM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "610591342457-kj9bpc51bbi0l5r2q3fe6gbbik4s8a1q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
