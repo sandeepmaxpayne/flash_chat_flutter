@@ -118,7 +118,6 @@ class MessageStream extends StatelessWidget {
     return StreamBuilder<QuerySnapshot>(
       stream: _firestore.collection('messages').snapshots(),
       builder: (context, snapshot) {
-        List<MessageBubble> messageBubbles = [];
         if (!snapshot.hasData) {
           return Center(
             child: CircularProgressIndicator(
@@ -127,6 +126,7 @@ class MessageStream extends StatelessWidget {
           );
         }
         final messages = snapshot.data.documents.reversed;
+        List<MessageBubble> messageBubbles = [];
 
         for (var message in messages) {
           final messageText = message.data['text'];
@@ -143,6 +143,7 @@ class MessageStream extends StatelessWidget {
 
         return Expanded(
           child: ListView(
+            physics: BouncingScrollPhysics(),
             reverse: true,
             padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
             children: messageBubbles,
