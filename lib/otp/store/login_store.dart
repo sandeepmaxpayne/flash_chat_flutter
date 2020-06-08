@@ -1,7 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flashchat/otp/pages/home_page.dart';
 import 'package:flashchat/otp/pages/login_page.dart';
 import 'package:flashchat/otp/pages/otp_page.dart';
+import 'package:flashchat/screens/registration_screen.dart';
+import 'package:flashchat/screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 
@@ -51,8 +52,12 @@ abstract class LoginStoreBase with Store {
               onAuthenticationSuccessful(context, value);
             } else {
               loginScaffoldKey.currentState.showSnackBar(SnackBar(
-                behavior: SnackBarBehavior.floating,
+                behavior: SnackBarBehavior.fixed,
                 backgroundColor: Colors.red,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(20.0),
+                        topRight: Radius.circular(20.0))),
                 content: Text(
                   'Invalid Code Entered',
                   style: TextStyle(color: Colors.white),
@@ -61,8 +66,12 @@ abstract class LoginStoreBase with Store {
             }
           }).catchError((error) {
             loginScaffoldKey.currentState.showSnackBar(SnackBar(
-              behavior: SnackBarBehavior.floating,
+              behavior: SnackBarBehavior.fixed,
               backgroundColor: Colors.red,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20.0),
+                      topRight: Radius.circular(20.0))),
               content: Text(
                 'Something went wrong ! please try later. ',
                 style: TextStyle(color: Colors.white),
@@ -73,10 +82,14 @@ abstract class LoginStoreBase with Store {
         verificationFailed: (AuthException authException) {
           print('Error Message: ${authException.message}');
           loginScaffoldKey.currentState.showSnackBar(SnackBar(
-            behavior: SnackBarBehavior.floating,
+            behavior: SnackBarBehavior.fixed,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20.0),
+                    topRight: Radius.circular(20.0))),
             backgroundColor: Colors.red,
             content: Text(
-              'The phone number format is incorrect. Please enter your number in format like [+][country code][mobile number]',
+              'The phone number format is incorrect. Please enter your number in format like [+][country code][mobile number] and make sure you\'re connected to internet !',
               style: TextStyle(color: Colors.white),
             ),
           ));
@@ -102,7 +115,11 @@ abstract class LoginStoreBase with Store {
     await _auth.signInWithCredential(_authCredential).catchError((error) {
       isOtpLoading = false;
       otpScaffoldKey.currentState.showSnackBar(SnackBar(
-        behavior: SnackBarBehavior.floating,
+        behavior: SnackBarBehavior.fixed,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(20.0),
+                topRight: Radius.circular(20.0))),
         backgroundColor: Colors.red,
         content: Text(
           'Wrong Code ! Please enter the recent OTP received.',
@@ -125,7 +142,7 @@ abstract class LoginStoreBase with Store {
     firebaseUser = result.user;
 
     Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(builder: (_) => HomePage()),
+        MaterialPageRoute(builder: (_) => RegistrationScreen()),
         (Route<dynamic> route) => false);
 
     isLoginLoading = false;
@@ -136,7 +153,7 @@ abstract class LoginStoreBase with Store {
   Future<void> signOut(BuildContext context) async {
     await _auth.signOut();
     await Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(builder: (_) => LoginPageOtp()),
+        MaterialPageRoute(builder: (_) => WelcomeScreen()),
         (Route<dynamic> route) => false);
     firebaseUser = null;
   }

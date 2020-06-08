@@ -16,10 +16,19 @@ class _LoginScreenState extends State<LoginScreen> {
   String loginPassword;
   final _auth = FirebaseAuth.instance;
   bool progress = false;
+  final _loginScaffoldKey = GlobalKey<ScaffoldState>();
+  bool _passwordVisible;
+
+  @override
+  void initState() {
+    super.initState();
+    _passwordVisible = false;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _loginScaffoldKey,
       backgroundColor: Colors.white,
       body: ModalProgressHUD(
         inAsyncCall: progress,
@@ -47,20 +56,38 @@ class _LoginScreenState extends State<LoginScreen> {
                 onChanged: (value) {
                   loginEmail = value;
                 },
-                decoration:
-                    kInputTextDecoration.copyWith(hintText: 'Enter your email'),
+                decoration: kInputTextDecoration.copyWith(
+                    labelStyle: TextStyle(fontWeight: FontWeight.bold),
+                    prefixIcon: Icon(Icons.email),
+                    labelText: 'email',
+                    hintText: 'Enter your email'),
               ),
               SizedBox(
                 height: 8.0,
               ),
               TextField(
                 textAlign: TextAlign.center,
-                obscureText: true,
+                obscureText: !_passwordVisible,
                 onChanged: (value) {
                   loginPassword = value;
                 },
                 decoration: kInputTextDecoration.copyWith(
-                    hintText: 'enter your password'),
+                  labelStyle: TextStyle(fontWeight: FontWeight.bold),
+                  labelText: 'Password',
+                  hintText: 'enter your password',
+                  prefixIcon:
+                      Icon(_passwordVisible ? Icons.lock_open : Icons.lock),
+                  suffixIcon: IconButton(
+                    icon: Icon(_passwordVisible
+                        ? Icons.visibility_off
+                        : Icons.visibility),
+                    onPressed: () {
+                      setState(() {
+                        _passwordVisible = !_passwordVisible;
+                      });
+                    },
+                  ),
+                ),
               ),
               SizedBox(
                 height: 24.0,
@@ -87,6 +114,21 @@ class _LoginScreenState extends State<LoginScreen> {
                       progress = false;
                     });
                     print('Login error: $e');
+                    _loginScaffoldKey.currentState.showSnackBar(
+                      SnackBar(
+                        content: Text(
+                          '${e.message}',
+                          style: TextStyle(color: Colors.white),
+                          textAlign: TextAlign.center,
+                        ),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(20.0),
+                                topRight: Radius.circular(20.0))),
+                        backgroundColor: Colors.red,
+                        behavior: SnackBarBehavior.fixed,
+                      ),
+                    );
                   }
                 },
               ),

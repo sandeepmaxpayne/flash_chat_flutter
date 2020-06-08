@@ -1,9 +1,9 @@
 import 'package:flashchat/otp/store/login_store.dart';
+import 'package:flashchat/screens/chat_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../theme.dart';
-import 'home_page.dart';
 import 'login_page.dart';
 
 class SplashPage extends StatefulWidget {
@@ -20,8 +20,9 @@ class _SplashPageState extends State<SplashPage> {
         .isAlreaduAuthenticated()
         .then((result) {
       if (result) {
+        print('result: $result');
         Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(builder: (_) => HomePage()),
+            MaterialPageRoute(builder: (_) => ChatScreen()),
             (Route<dynamic> route) => false);
       } else {
         Navigator.of(context).pushAndRemoveUntil(

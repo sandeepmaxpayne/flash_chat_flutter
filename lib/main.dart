@@ -5,10 +5,21 @@ import 'package:flashchat/screens/login_screen.dart';
 import 'package:flashchat/screens/registration_screen.dart';
 import 'package:flashchat/screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'intro_onboarding/onboarding_screen.dart';
 import 'otp/pages/splash_page.dart';
 import 'package:provider/provider.dart';
 
-void main() => runApp(FlashChat());
+int initScreen;
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  initScreen = prefs.getInt('initScreen');
+  await prefs.setInt('initScreen', 1);
+  print("initScreen: $initScreen");
+  runApp(FlashChat());
+}
 
 class FlashChat extends StatelessWidget {
   @override
@@ -20,8 +31,11 @@ class FlashChat extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
-        initialRoute: SplashPage.id,
+        initialRoute: initScreen == 0 || initScreen == null
+            ? IntroScreen.id
+            : WelcomeScreen.id,
         routes: {
+          IntroScreen.id: (context) => IntroScreen(),
           SplashPage.id: (context) => SplashPage(),
           WelcomeScreen.id: (context) => WelcomeScreen(),
           LoginScreen.id: (context) => LoginScreen(),

@@ -14,6 +14,7 @@ class LoginPageOtp extends StatefulWidget {
 
 class _LoginPageOtpState extends State<LoginPageOtp> {
   TextEditingController phoneController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Consumer<LoginStore>(
@@ -58,7 +59,7 @@ class _LoginPageOtpState extends State<LoginPageOtp> {
                                         margin: EdgeInsets.symmetric(
                                             horizontal: 8.0),
                                         child: Image.asset(
-                                          'assets/img/login.png',
+                                          'images/png/chat.png',
                                         ),
                                       ),
                                     ),
@@ -89,18 +90,14 @@ class _LoginPageOtpState extends State<LoginPageOtp> {
                                   textAlign: TextAlign.center,
                                   text: TextSpan(children: <TextSpan>[
                                     TextSpan(
-                                        text: 'One Time Password',
+                                        text: 'One Time Password will be sent ',
                                         style: TextStyle(
                                             color: MyColors.primaryColor)),
-                                    TextSpan(
-                                        text: 'On this mobile number',
-                                        style: TextStyle(
-                                            color: MyColors.primaryColor,
-                                            fontWeight: FontWeight.bold)),
                                     TextSpan(
                                         text: 'on this mobile number',
                                         style: TextStyle(
-                                            color: MyColors.primaryColor)),
+                                            color: MyColors.primaryColor,
+                                            fontWeight: FontWeight.bold)),
                                   ]),
                                 ),
                               ),
@@ -108,20 +105,30 @@ class _LoginPageOtpState extends State<LoginPageOtp> {
                                 height: 40,
                                 constraints: BoxConstraints(maxWidth: 500),
                                 margin: EdgeInsets.symmetric(
-                                    horizontal: 20, vertical: 10),
+                                    horizontal: 20, vertical: 5),
                                 child: CupertinoTextField(
+                                  autofocus: true,
+                                  cursorColor: MyColors.primaryColor,
                                   padding:
                                       EdgeInsets.symmetric(horizontal: 16.0),
                                   decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(4))),
+                                    color: Colors.white70,
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(14.0),
+                                    ),
+                                    border: Border.all(
+                                        color: MyColors.primaryColor,
+                                        width: 0.9),
+                                  ),
                                   controller: phoneController,
                                   clearButtonMode:
                                       OverlayVisibilityMode.editing,
                                   keyboardType: TextInputType.phone,
                                   maxLines: 1,
-                                  placeholder: '+91...',
+                                  placeholder: '+91 1234567890',
+                                  textAlign: TextAlign.center,
+                                  placeholderStyle:
+                                      TextStyle(fontWeight: FontWeight.w100),
                                 ),
                               ),
                               Container(
@@ -136,10 +143,17 @@ class _LoginPageOtpState extends State<LoginPageOtp> {
                                     } else {
                                       loginStore.loginScaffoldKey.currentState
                                           .showSnackBar(SnackBar(
-                                        behavior: SnackBarBehavior.floating,
+                                        behavior: SnackBarBehavior.fixed,
+                                        elevation: 5.0,
                                         backgroundColor: Colors.red,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.only(
+                                              topLeft: Radius.circular(20.0),
+                                              topRight: Radius.circular(20.0)),
+                                        ),
                                         content: Text(
                                           'Please enter a phone number',
+                                          textAlign: TextAlign.center,
                                           style: TextStyle(color: Colors.white),
                                         ),
                                       ));

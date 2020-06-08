@@ -16,10 +16,20 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   String email;
   String password;
   bool showSpinner = false;
+  bool _passwordVisible;
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+    _passwordVisible = false;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      key: _scaffoldKey,
       body: ModalProgressHUD(
         inAsyncCall: showSpinner,
         child: Padding(
@@ -47,21 +57,35 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   //Do something with the user input.
                   email = value;
                 },
-                decoration:
-                    kInputTextDecoration.copyWith(hintText: 'Enter your email'),
+                decoration: kInputTextDecoration.copyWith(
+                    labelStyle: TextStyle(fontWeight: FontWeight.bold),
+                    labelText: 'email',
+                    hintText: 'Enter your email'),
               ),
               SizedBox(
                 height: 8.0,
               ),
               TextField(
                 textAlign: TextAlign.center,
-                obscureText: true,
+                obscureText: !_passwordVisible,
                 onChanged: (value) {
                   //Do something with the user input.
                   password = value;
                 },
                 decoration: kInputTextDecoration.copyWith(
-                    hintText: 'Enter your password'),
+                    labelStyle: TextStyle(fontWeight: FontWeight.bold),
+                    labelText: 'password',
+                    hintText: 'Enter your password',
+                    prefixIcon:
+                        Icon(_passwordVisible ? Icons.lock_open : Icons.lock),
+                    suffixIcon: IconButton(
+                      icon: Icon(_passwordVisible
+                          ? Icons.visibility_off
+                          : Icons.visibility),
+                      onPressed: () {
+                        _passwordVisible = !_passwordVisible;
+                      },
+                    )),
               ),
               SizedBox(
                 height: 24.0,
@@ -85,7 +109,21 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     setState(() {
                       showSpinner = false;
                     });
-                    print(e);
+                    _scaffoldKey.currentState.showSnackBar(
+                      SnackBar(
+                        content: Text(
+                          '${e.message}',
+                          style: TextStyle(color: Colors.white),
+                          textAlign: TextAlign.center,
+                        ),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(20.0),
+                                topRight: Radius.circular(20.0))),
+                        backgroundColor: Colors.red,
+                        behavior: SnackBarBehavior.fixed,
+                      ),
+                    );
                   }
                 },
                 color: Colors.blueAccent,

@@ -26,13 +26,13 @@ class _OtpPageState extends State<OtpPage> {
         height: 40,
         width: 40,
         decoration: BoxDecoration(
-          border: Border.all(color: Colors.black54, width: 0.1),
+          border: Border.all(color: MyColors.primaryColor, width: 0.9),
           borderRadius: BorderRadius.all(Radius.circular(8)),
         ),
         child: Center(
             child: Text(
           text[position],
-          style: TextStyle(color: Colors.black54),
+          style: TextStyle(color: Colors.black),
         )),
       );
     } catch (e) {
@@ -40,7 +40,7 @@ class _OtpPageState extends State<OtpPage> {
         height: 40,
         width: 40,
         decoration: BoxDecoration(
-          border: Border.all(color: Colors.black54, width: 0.1),
+          border: Border.all(color: Colors.red, width: 0.9),
           borderRadius: BorderRadius.all(Radius.circular(8)),
         ),
       );
