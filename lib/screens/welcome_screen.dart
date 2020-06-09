@@ -70,12 +70,20 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                     height: 60,
                   ),
                 ),
-                TypewriterAnimatedTextKit(
+                ColorizeAnimatedTextKit(
                   text: ['Flash Chat'],
                   textStyle: TextStyle(
                     fontSize: 45.0,
                     fontWeight: FontWeight.w900,
                   ),
+                  colors: <Color>[
+                    Colors.purple,
+                    Colors.blue,
+                    Colors.redAccent,
+                    Colors.yellow,
+                    Colors.lightGreen,
+                    Colors.grey,
+                  ],
                 ),
               ],
             ),

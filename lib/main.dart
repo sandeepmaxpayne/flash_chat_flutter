@@ -1,6 +1,7 @@
 import 'package:flashchat/otp/pages/splash_page.dart';
 import 'package:flashchat/otp/store/login_store.dart';
 import 'package:flashchat/screens/chat_screen.dart';
+import 'package:flashchat/screens/dashboard.dart';
 import 'package:flashchat/screens/login_screen.dart';
 import 'package:flashchat/screens/registration_screen.dart';
 import 'package:flashchat/screens/welcome_screen.dart';
@@ -41,6 +42,7 @@ class FlashChat extends StatelessWidget {
           LoginScreen.id: (context) => LoginScreen(),
           RegistrationScreen.id: (context) => RegistrationScreen(),
           ChatScreen.id: (context) => ChatScreen(),
+          DashBoard.id: (context) => DashBoard(),
         },
       ),
     );

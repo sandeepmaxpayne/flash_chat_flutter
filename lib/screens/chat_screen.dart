@@ -60,7 +60,15 @@ class _ChatScreenState extends State<ChatScreen> {
     return Consumer<LoginStore>(builder: (_, loginStore, __) {
       return Scaffold(
         appBar: AppBar(
-          leading: null,
+          leading: Builder(builder: (BuildContext context) {
+            return IconButton(
+              icon: Icon(Icons.dashboard),
+              tooltip: 'dashboard',
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            );
+          }),
           actions: <Widget>[
             IconButton(
                 icon: Icon(Icons.close),

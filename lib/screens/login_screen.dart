@@ -1,8 +1,8 @@
+import 'package:flashchat/screens/dashboard.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flashchat/components/rounded_button.dart';
 import 'package:flashchat/constants.dart';
-import 'package:flashchat/screens/chat_screen.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -107,7 +107,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       setState(() {
                         progress = false;
                       });
-                      Navigator.pushNamed(context, ChatScreen.id);
+                      Navigator.pushNamed(context, DashBoard.id);
                     }
                   } catch (e) {
                     setState(() {
