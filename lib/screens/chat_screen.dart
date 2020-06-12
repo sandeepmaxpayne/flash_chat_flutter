@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flashchat/otp/store/login_store.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import '../constants.dart';
 
@@ -107,6 +108,8 @@ class _ChatScreenState extends State<ChatScreen> {
                         _firestore.collection('messages').add({
                           'text': messageText,
                           'sender': loggedInUser.email,
+                          // 'time': DateTime.now()
+                          'date': DateTime.now().toIso8601String().toString()
                         });
                       },
                       child: Text(
@@ -129,7 +132,7 @@ class MessageStream extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-      stream: _firestore.collection('messages').snapshots(),
+      stream: _firestore.collection('messages').orderBy('date').snapshots(),
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
           return Center(
@@ -144,11 +147,13 @@ class MessageStream extends StatelessWidget {
         for (var message in messages) {
           final messageText = message.data['text'];
           final messageSender = message.data['sender'];
+          final messageTime = message.data['date'];
           final currentUser = loggedInUser.email;
           final messageBubble = MessageBubble(
             sender: messageSender,
             text: messageText,
             isMe: currentUser == messageSender,
+            time: DateTime.parse(messageTime),
           );
 
           messageBubbles.add(messageBubble);
@@ -168,12 +173,16 @@ class MessageStream extends StatelessWidget {
 }
 
 class MessageBubble extends StatelessWidget {
-  MessageBubble({this.text, this.sender, this.isMe});
+  MessageBubble({this.text, this.sender, this.isMe, this.time});
   final String text;
   final String sender;
   final bool isMe;
+  final DateTime time;
+  var timeFormat;
   @override
   Widget build(BuildContext context) {
+    timeFormat = DateFormat('jm').format(time);
+
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: Column(
@@ -181,7 +190,7 @@ class MessageBubble extends StatelessWidget {
             isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
         children: <Widget>[
           Text(
-            sender,
+            "$sender $timeFormat",
             style: TextStyle(color: Colors.black54),
           ),
           Material(

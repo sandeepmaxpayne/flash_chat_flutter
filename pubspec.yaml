@@ -10,7 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-
+  intl: ^0.16.1
   cupertino_icons: ^0.1.2
   animated_text_kit: ^2.0.1
   firebase_core: ^0.4.4+3
