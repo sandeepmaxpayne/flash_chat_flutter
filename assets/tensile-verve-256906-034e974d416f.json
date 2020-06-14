@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "tensile-verve-256906",
+  "private_key_id": "034e974d416f7cd7bb02bc25a9740304ed3a1e8a",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDH+l+S6YuryYMq\n4gxdcmFc6bdWrf5mk/9cm4UXiTnHZ3jm2vdEtWB6B3zgf+5MJtPyIPf+iM5ysBQS\n6F1HIoof7nKPwHsda+0UsEDekUmxT+LFv3zgefhp1/JE7JnrFqNfTe+rbcTwkpAY\nacnOOTl6QxWOqkYoXynqzwNnTTAAd/VC0llNQ9MPNMAAyc6ioTghStU1m6M12hxE\nx7vUY+ZnHhDsoQ5j0UAHTQxzoWoEzFs9aaCuPdj5itqUmr5RwqL4XEjFtpX61lkl\nIfMo9eT7Hbpx5YUoMFmEzaISiOLKA77wie0ihF1hYLHRhCte54RYTEK+ZkC8qk9b\nwOe8J4ItAgMBAAECggEATcWeCMUiKBeRFwrdczQqEFfmkOPPBfa1v77N5mbcXSPt\nHZ73vjVpxVuHIcovE1egYtCWkduDqo+25tmOeT1CCYQS8rwRRVJ1W+/l8oj/Z2Fh\nmLVNbAGTbhppIov/mjFuLQDi3kEs78CYIJ53uOeBZn6Tci3fZhEIfMSwlqqqqetN\nH5OgEEaUxWVqgKP6wNWeD8Ode4zYGYUMHEi+Y2eIgTT69RKJ0im2D2GB31rz/aHJ\n9aOyfajTucyHh86rnRViBWQ/m7T8NJOzItVSRN3swodcUBZ2tKO1oNCasGe5jnyg\neZ2oX38TCuFGKDrTz5ZnW8Be9CjEvTiiVoNd5VHwUwKBgQDoETINkoqNj6cdMm8H\n9l3o40/34y8QxtixK2/GaMGpgd1D+00DloVYxHZxDzHB1WW/mEi3rk4YYENwoW1D\nkjcMw8d9JS4ZUFfMJ61VqI3kO0PtatsuOZNQ5nU2CLT3TjkdNNLdVuW6mxGIK0vm\nMdIPSBxEoqwo9ZGCCm+9zX0Y3wKBgQDcmf4IBdjvZm5VnHxRzRk4em8QDaIvpVZ8\nYvvRKNxwhmbFUZOIQuIGnjL5srjQpGCHxf8V0CiMTsTbWZITzaRqMHC6FyiU1irO\nOz9cNTBTtZ6fVlTA79g8dMKkzsoKtWr96nqxBwLdrIcbsWOYX2CwPJmwpxJyefWL\n51ltD3dqcwKBgGdZERNeSXnVmbS0+yFupE/Mu5ZHhHRSObpc/8A6ctSMUv+tcJTC\necwYYi7jd2M9J7z1kpzKcVkFtcL5APHwsbdrkPG4lxkK4K64lMbq85XKluuqhMXH\nOkXy/Av+QKlKGsFY/vc3dcNuv5YGwhxX35aSpJQkZcsv4YcqIq1CUA29AoGBALlf\nUZ8uQrgRS//2ymT2ww25nGBSBIqjFgTaLJ77BhosZmnC/gVPpp1HDLDUpQb2SgNt\ntsd+rsQQYM2t+9lWQaXV5LQLR9eiDEBWewyhyWVeRdfA9OFX6k4LE5DoD9Fl121d\nPxJJQPhDxRjZPEbLRvVxRvixvAekQlj45CWIDKHPAoGAcFJkUYLE5w01bZaFu0pg\n9s80s5f6KhVdv8t2kxaQZ0tVErpYkyMwMg+ub0rbU6HHq2b8A4L7kmYxHA0miGPc\nLm2LAaTMoBIbuXbg1OMn/yX32iLb0y2hz0bFkf/ekBeLNKr1QsM03gfB6ulsIfRB\nLjY3WP15WC79wrBS26IPUmE=\n-----END PRIVATE KEY-----\n",
+  "client_email": "tuturapp@tensile-verve-256906.iam.gserviceaccount.com",
+  "client_id": "111758879881222276935",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/tuturapp%40tensile-verve-256906.iam.gserviceaccount.com"
+}

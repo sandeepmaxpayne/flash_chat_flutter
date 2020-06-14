@@ -83,7 +83,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           ? Icons.visibility_off
                           : Icons.visibility),
                       onPressed: () {
-                        _passwordVisible = !_passwordVisible;
+                        setState(() {
+                          _passwordVisible = !_passwordVisible;
+                        });
                       },
                     )),
               ),

@@ -10,6 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
 
+  flutter_dialogflow: ^0.1.3
   intl: ^0.16.1
   cupertino_icons: ^0.1.2
   animated_text_kit: ^2.0.1
@@ -47,6 +48,7 @@ flutter:
     - images/
     - images/svg/
     - images/png/
+    - assets/tensile-verve-256906-034e974d416f.json
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flashchat/dialog.dart';
 import 'package:flashchat/otp/pages/splash_page.dart';
 import 'package:flashchat/otp/store/login_store.dart';
 import 'package:flashchat/screens/chat_screen.dart';
@@ -12,6 +14,7 @@ import 'otp/pages/splash_page.dart';
 import 'package:provider/provider.dart';
 
 int initScreen;
+final FirebaseAuth _auth = FirebaseAuth.instance;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,6 +26,11 @@ Future<void> main() async {
 }
 
 class FlashChat extends StatelessWidget {
+  // Method , if user logged in or not
+  Future<FirebaseUser> getUser() async {
+    return await _auth.currentUser();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -32,10 +40,12 @@ class FlashChat extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
+//        initialRoute: DialogChat.id,
         initialRoute: initScreen == 0 || initScreen == null
             ? IntroScreen.id
             : WelcomeScreen.id,
         routes: {
+          DialogChat.id: (context) => DialogChat(),
           IntroScreen.id: (context) => IntroScreen(),
           SplashPage.id: (context) => SplashPage(),
           WelcomeScreen.id: (context) => WelcomeScreen(),
